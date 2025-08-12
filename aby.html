@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbyyCipherX - Portfolio Siswa Developer</title>
+    <meta name="description" content="Portfolio siswa yang bercita-cita menjadi web developer dengan fokus cybersecurity">
+    <meta name="keywords" content="web developer, siswa, cybersecurity, programming, portfolio">
+    <meta property="og:title" content="AbyyCipherX - Portfolio Siswa Developer">
+    <meta property="og:description" content="Portfolio siswa yang bercita-cita menjadi web developer dengan fokus cybersecurity">
+    <meta name="twitter:title" content="AbyyCipherX - Portfolio Siswa Developer">
+    <meta name="twitter:description" content="Portfolio siswa yang bercita-cita menjadi web developer dengan fokus cybersecurity">
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.dark .watermark {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.typing-animation {
+    overflow: hidden;
+    border-right: 3px solid;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: currentColor }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-card.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-text.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-slide {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-slide.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stagger animation delays */
+.animate-card:nth-child(1) { transition-delay: 0.1s; }
+.animate-card:nth-child(2) { transition-delay: 0.2s; }
+.animate-card:nth-child(3) { transition-delay: 0.3s; }
+.animate-card:nth-child(4) { transition-delay: 0.4s; }
+.animate-card:nth-child(5) { transition-delay: 0.5s; }
+.animate-card:nth-child(6) { transition-delay: 0.6s; }</style>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="components/Header.js">function Header({ darkMode, toggleDarkMode }) {
+    try {
+        return (
+            <header data-name="header" data-file="components/Header.js" className={`fixed top-0 w-full z-50 transition-all duration-300 ${darkMode ? 'bg-gray-900/90' : 'bg-white/90'} backdrop-blur-md border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <nav className="container mx-auto px-6 py-4">
+                    <div className="flex justify-between items-center">
+                        <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            AbyyCipherX
+                        </div>
+                        
+                        <div className="flex items-center space-x-6">
+                            <a href="#about" className={`hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                Tentang
+                            </a>
+                            <a href="#languages" className={`hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                Bahasa
+                            </a>
+                            <a href="#cybersecurity" className={`hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                Cyber Security
+                            </a>
+                            
+                            <button
+                                onClick={toggleDarkMode}
+                                className={`p-2 rounded-full transition-all duration-300 ${darkMode ? 'bg-yellow-500 text-gray-900' : 'bg-gray-800 text-white'} hover:scale-110`}
+                            >
+                                <i className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        );
+    } catch (error) {
+        console.error('Header component error:', error);
+        reportError(error);
+    }
+}</script>
+    <script type="text/babel" src="components/Hero.js">function Hero({ darkMode }) {
+    try {
+        return (
+            <section data-name="hero" data-file="components/Hero.js" className={`min-h-screen flex items-center justify-center ${darkMode ? 'bg-gray-900' : 'bg-white'} transition-all duration-300`}>
+                <div className="container mx-auto px-6 py-20">
+                    <div className="flex flex-col lg:flex-row items-center justify-between">
+                        <div className="lg:w-1/2 mb-10 lg:mb-0 fade-in">
+                            <h1 className={`text-5xl lg:text-7xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                Halo, Saya
+                                <span className="block text-blue-500 typing-animation">
+                                    AbyyCipherX
+                                </span>
+                            </h1>
+                            <p className={`text-xl lg:text-2xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                Siswa yang bercita-cita menjadi Web Developer & Cybersecurity Expert
+                            </p>
+                            <div className="flex space-x-4">
+                                <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105">
+                                    Lihat Portfolio
+                                </button>
+                                <a 
+                                    href="https://t.me/abylolipop" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className={`border-2 ${darkMode ? 'border-white text-white hover:bg-white hover:text-gray-900' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'} px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2`}
+                                >
+                                    <i className="fab fa-telegram"></i>
+                                    <span>Hubungi Saya</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div className="lg:w-1/2 flex justify-center slide-in-left">
+                            <div className="relative">
+                                <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-blue-500 shadow-2xl">
+                                    <img 
+                                        src="https://files.catbox.moe/lvbwrn.jpg" 
+                                        alt="Profile AbyyCipherX"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="absolute -bottom-4 -right-4 bg-blue-500 text-white p-4 rounded-full shadow-lg">
+                                    <i className="fas fa-code text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    } catch (error) {
+        console.error('Hero component error:', error);
+        reportError(error);
+    }
+}</script>
+    <script type="text/babel" src="components/About.js">function About({ darkMode }) {
+    try {
+        return (
+            <section data-name="about" data-file="components/About.js" id="about" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} transition-all duration-300 scroll-reveal`}>
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16 animate-text">
+                        <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Tentang Saya
+                        </h2>
+                        <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+                            Seorang siswa yang passionate dalam dunia teknologi dan keamanan siber
+                        </p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-card`}>
+                            <div className="text-blue-500 text-4xl mb-4">
+                                <i className="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                Status Pendidikan
+                            </h3>
+                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                Masih menempuh pendidikan sekolah sambil belajar programming secara otodidak
+                            </p>
+                        </div>
+                        
+                        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-card`}>
+                            <div className="text-blue-500 text-4xl mb-4">
+                                <i className="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                Passion
+                            </h3>
+                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                Web Development, UI/UX Design, dan Cybersecurity menjadi fokus utama pembelajaran
+                            </p>
+                        </div>
+                        
+                        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 md:col-span-2 lg:col-span-1 animate-card`}>
+                            <div className="text-blue-500 text-4xl mb-4">
+                                <i className="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                Visi
+                            </h3>
+                            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                Menjadi developer handal yang dapat menciptakan aplikasi web aman dan user-friendly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    } catch (error) {
+        console.error('About component error:', error);
+        reportError(error);
+    }
+}</script>
+    <script type="text/babel" src="components/Languages.js">function Languages({ darkMode }) {
+    const [activeLanguage, setActiveLanguage] = React.useState('html');
+    
+    const languages = {
+        html: {
+            name: 'HTML5',
+            icon: 'fab fa-html5',
+            color: 'text-orange-500',
+            description: 'HyperText Markup Language - Struktur dasar semua website',
+            features: ['Semantic Elements', 'Form Validation', 'Local Storage', 'Canvas API'],
+            difficulty: 'Pemula',
+            usage: '100% website menggunakan HTML',
+            code: `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Saya</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h1>Selamat Datang!</h1>
+            <p>Saya adalah developer pemula</p>
+        </section>
+    </main>
+</body>
+</html>`
+        },
+        css: {
+            name: 'CSS3',
+            icon: 'fab fa-css3-alt',
+            color: 'text-blue-500',
+            description: 'Cascading Style Sheets - Mendesain tampilan website',
+            features: ['Flexbox & Grid', 'Animations', 'Responsive Design', 'CSS Variables'],
+            difficulty: 'Menengah',
+            usage: 'Styling 95% website modern',
+            code: `/* Modern CSS Layout */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+}`
+        },
+        javascript: {
+            name: 'JavaScript ES6+',
+            icon: 'fab fa-js-square',
+            color: 'text-yellow-500',
+            description: 'Bahasa pemrograman untuk interaktivitas dan logika web',
+            features: ['ES6+ Syntax', 'Async/Await', 'DOM Manipulation', 'API Integration'],
+            difficulty: 'Menengah-Lanjut',
+            usage: '97% website interaktif',
+            code: `// Modern JavaScript Example
+class Portfolio {
+    constructor(name, skills) {
+        this.name = name;
+        this.skills = skills;
+        this.projects = [];
+    }
+    
+    async fetchProjects() {
+        try {
+            const response = await fetch('/api/projects');
+            this.projects = await response.json();
+            this.displayProjects();
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+        }
+    }
+    
+    displayProjects() {
+        const container = document.querySelector('.projects');
+        this.projects.forEach(project => {
+            const card = this.createProjectCard(project);
+            container.appendChild(card);
+        });
+    }
+    
+    createProjectCard(project) {
+        const card = document.createElement('div');
+        card.innerHTML = \`
+            <h3>\${project.title}</h3>
+            <p>\${project.description}</p>
+        \`;
+        return card;
+    }
+}
+
+const myPortfolio = new Portfolio('AbyyCipherX', ['HTML', 'CSS', 'JS']);
+myPortfolio.fetchProjects();`
+        },
+        react: {
+            name: 'React.js',
+            icon: 'fab fa-react',
+            color: 'text-cyan-500',
+            description: 'Library JavaScript untuk membangun user interface modern',
+            features: ['Component-Based', 'Virtual DOM', 'Hooks', 'State Management'],
+            difficulty: 'Lanjut',
+            usage: '40% website modern menggunakan React',
+            code: `// React Functional Component with Hooks
+import React, { useState, useEffect } from 'react';
+
+function ProjectCard({ project }) {
+    const [isLiked, setIsLiked] = useState(false);
+    const [likes, setLikes] = useState(project.likes);
+    
+    useEffect(() => {
+        // Load user preferences
+        const savedLike = localStorage.getItem(\`like-\${project.id}\`);
+        if (savedLike) setIsLiked(JSON.parse(savedLike));
+    }, [project.id]);
+    
+    const handleLike = () => {
+        const newLikedState = !isLiked;
+        setIsLiked(newLikedState);
+        setLikes(prev => newLikedState ? prev + 1 : prev - 1);
+        localStorage.setItem(\`like-\${project.id}\`, JSON.stringify(newLikedState));
+    };
+    
+    return (
+        <div className="project-card">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <button 
+                onClick={handleLike}
+                className={\`like-btn \${isLiked ? 'liked' : ''}\`}
+            >
+                ❤️ {likes}
+            </button>
+        </div>
+    );
+}`
+        }
+    };
+
+    try {
+        return (
+            <section data-name="languages" data-file="components/Languages.js" id="languages" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'} transition-all duration-300 scroll-reveal`}>
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16 animate-text">
+                        <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Teknologi Web Development
+                        </h2>
+                        <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
+                            Bahasa pemrograman dan teknologi yang saya pelajari untuk menjadi full-stack developer
+                        </p>
+                    </div>
+                    
+                    <div className="flex flex-wrap justify-center gap-4 mb-12 animate-slide">
+                        {Object.entries(languages).map(([key, lang]) => (
+                            <button
+                                key={key}
+                                onClick={() => setActiveLanguage(key)}
+                                className={`flex items-center space-x-3 px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                                    activeLanguage === key 
+                                        ? 'bg-blue-500 text-white shadow-lg' 
+                                        : darkMode 
+                                            ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
+                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                }`}
+                            >
+                                <i className={`${lang.icon} ${lang.color} text-xl`}></i>
+                                <span>{lang.name}</span>
+                            </button>
+                        ))}
+                    </div>
+                    
+                    <div className="grid lg:grid-cols-3 gap-8 mb-8">
+                        <div className={`lg:col-span-2 p-8 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} shadow-lg animate-card`}>
+                            <div className="flex items-center space-x-4 mb-6">
+                                <i className={`${languages[activeLanguage].icon} ${languages[activeLanguage].color} text-4xl`}></i>
+                                <div>
+                                    <h3 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                        {languages[activeLanguage].name}
+                                    </h3>
+                                    <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                        {languages[activeLanguage].description}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-white'} border ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                                <pre className={`text-sm overflow-x-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                    <code>{languages[activeLanguage].code}</code>
+                                </pre>
+                            </div>
+                        </div>
+                        
+                        <div className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} shadow-lg animate-card`}>
+                            <h4 className={`text-xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                Detail Teknologi
+                            </h4>
+                            
+                            <div className="space-y-4">
+                                <div>
+                                    <span className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        Tingkat Kesulitan:
+                                    </span>
+                                    <p className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                        {languages[activeLanguage].difficulty}
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <span className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        Penggunaan:
+                                    </span>
+                                    <p className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                        {languages[activeLanguage].usage}
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <span className={`text-sm font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        Fitur Utama:
+                                    </span>
+                                    <ul className={`mt-2 space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                        {languages[activeLanguage].features.map((feature, index) => (
+                                            <li key={index} className="flex items-center">
+                                                <i className="fas fa-check text-green-500 mr-2"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    } catch (error) {
+        console.error('Languages component error:', error);
+        reportError(error);
+    }
+}
+</script>
+    <script type="text/babel" src="components/CyberSecurity.js">function CyberSecurity({ darkMode }) {
+    const [activeTab, setActiveTab] = React.useState('benefits');
+    
+    const cyberCrimes = [
+        {
+            title: 'WannaCry Ransomware (2017)',
+            description: 'Serangan ransomware global yang menginfeksi 300,000+ komputer di 150+ negara',
+            victim: 'NHS (Layanan Kesehatan Inggris)',
+            impact: '19,000 janji medis dibatalkan, 600 praktik dokter terpengaruh',
+            damage: '$4 miliar kerugian global',
+            photo: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=250&fit=crop',
+            source: 'BBC News, Reuters, The Guardian',
+            details: 'Memanfaatkan kerentanan Windows SMB, menyebar secara otomatis tanpa interaksi pengguna'
+        },
+        {
+            title: 'Equifax Data Breach (2017)',
+            description: 'Pelanggaran data terbesar dalam sejarah yang mengekspos informasi pribadi jutaan orang',
+            victim: 'Equifax Inc. - Biro Kredit Amerika',
+            impact: 'Data 147 juta orang Amerika dicuri termasuk SSN, tanggal lahir, alamat',
+            damage: '$700 juta denda dan kompensasi',
+            photo: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop',
+            source: 'CNN, Wall Street Journal, Federal Trade Commission',
+            details: 'Hacker mengeksploitasi kerentanan Apache Struts selama 76 hari tanpa terdeteksi'
+        },
+        {
+            title: 'Colonial Pipeline Ransomware (2021)',
+            description: 'Serangan terhadap infrastruktur kritis energi Amerika Serikat',
+            victim: 'Colonial Pipeline Company',
+            impact: 'Pipeline minyak terbesar AS ditutup selama 6 hari, kelangkaan bahan bakar',
+            damage: '$4.4 juta tebusan dibayarkan (sebagian berhasil dipulihkan FBI)',
+            photo: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop',
+            source: 'Associated Press, Washington Post, FBI Statement',
+            details: 'Kelompok DarkSide menggunakan ransomware untuk melumpuhkan sistem operasional'
+        },
+        {
+            title: 'Facebook-Cambridge Analytica (2018)',
+            description: 'Skandal penyalahgunaan data pribadi untuk manipulasi politik',
+            victim: '87 juta pengguna Facebook global',
+            impact: 'Data digunakan untuk mempengaruhi pemilu AS 2016 dan Brexit',
+            damage: '$5 miliar denda dari FTC, kehilangan kepercayaan publik',
+            photo: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop',
+            source: 'The New York Times, The Guardian, Federal Trade Commission',
+            details: 'Data harvesting melalui aplikasi quiz kepribadian tanpa persetujuan eksplisit'
+        }
+    ];
+
+    const benefits = [
+        {
+            icon: 'fas fa-shield-alt',
+            title: 'Perlindungan Data Pribadi',
+            description: 'Melindungi informasi sensitif seperti KTP, rekening bank, dan data medis',
+            importance: 'Critical',
+            examples: ['Enkripsi data', 'Access control', 'Data masking']
+        },
+        {
+            icon: 'fas fa-building',
+            title: 'Keamanan Infrastruktur',
+            description: 'Melindungi sistem vital seperti rumah sakit, bank, dan utilitas publik',
+            importance: 'Critical',
+            examples: ['Network segmentation', 'Intrusion detection', 'Backup systems']
+        },
+        {
+            icon: 'fas fa-money-bill-wave',
+            title: 'Pencegahan Kerugian Finansial',
+            description: 'Mencegah pencurian uang digital dan penipuan online',
+            importance: 'High',
+            examples: ['Fraud detection', 'Secure payment', 'Identity verification']
+        },
+        {
+            icon: 'fas fa-graduation-cap',
+            title: 'Edukasi Digital Literacy',
+            description: 'Mengajarkan masyarakat mengenali dan menghindari ancaman siber',
+            importance: 'High',
+            examples: ['Phishing awareness', 'Password security', 'Safe browsing']
+        },
+        {
+            icon: 'fas fa-globe',
+            title: 'Stabilitas Ekonomi Digital',
+            description: 'Menjaga kepercayaan dalam transaksi dan bisnis online',
+            importance: 'Medium',
+            examples: ['E-commerce security', 'Digital certificates', 'Reputation systems']
+        },
+        {
+            icon: 'fas fa-user-secret',
+            title: 'Privasi Online',
+            description: 'Melindungi privasi dan kebebasan berekspresi di dunia digital',
+            importance: 'Medium',
+            examples: ['VPN usage', 'Anonymous browsing', 'Data minimization']
+        }
+    ];
+
+    try {
+        return (
+            <section data-name="cybersecurity" data-file="components/CyberSecurity.js" id="cybersecurity" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} transition-all duration-300 scroll-reveal`}>
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16 animate-text">
+                        <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            Cybersecurity & Digital Safety
+                        </h2>
+                        <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-4xl mx-auto`}>
+                            Memahami pentingnya keamanan siber melalui kasus nyata dan manfaat perlindungan digital
+                        </p>
+                    </div>
+                    
+                    <div className="flex justify-center mb-12 animate-slide">
+                        <div className={`flex rounded-full p-1 ${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                            <button
+                                onClick={() => setActiveTab('benefits')}
+                                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                                    activeTab === 'benefits'
+                                        ? 'bg-blue-500 text-white shadow-lg'
+                                        : darkMode ? 'text-gray-300' : 'text-gray-700'
+                                }`}
+                            >
+                                Manfaat Cyber Security
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('crimes')}
+                                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                                    activeTab === 'crimes'
+                                        ? 'bg-red-500 text-white shadow-lg'
+                                        : darkMode ? 'text-gray-300' : 'text-gray-700'
+                                }`}
+                            >
+                                Kasus Kejahatan Siber
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {activeTab === 'benefits' && (
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {benefits.map((benefit, index) => (
+                                <div key={index} className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-card`}>
+                                    <div className="flex items-center mb-4">
+                                        <div className="text-blue-500 text-3xl mr-4">
+                                            <i className={benefit.icon}></i>
+                                        </div>
+                                        <div>
+                                            <h3 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                                {benefit.title}
+                                            </h3>
+                                            <span className={`text-xs px-2 py-1 rounded-full ${
+                                                benefit.importance === 'Critical' ? 'bg-red-100 text-red-800' :
+                                                benefit.importance === 'High' ? 'bg-orange-100 text-orange-800' :
+                                                'bg-yellow-100 text-yellow-800'
+                                            }`}>
+                                                {benefit.importance}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p className={`mb-4 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                        {benefit.description}
+                                    </p>
+                                    <div>
+                                        <h4 className={`text-xs font-semibold mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                                            Implementasi:
+                                        </h4>
+                                        <ul className="space-y-1">
+                                            {benefit.examples.map((example, idx) => (
+                                                <li key={idx} className={`text-xs flex items-center ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                                    <i className="fas fa-check text-green-500 mr-2 text-xs"></i>
+                                                    {example}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    
+                    {activeTab === 'crimes' && (
+                        <div className="grid lg:grid-cols-2 gap-8">
+                            {cyberCrimes.map((crime, index) => (
+                                <div key={index} className={`rounded-2xl overflow-hidden ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-red-500 animate-card`}>
+                                    <img 
+                                        src={crime.photo} 
+                                        alt={crime.title}
+                                        className="w-full h-48 object-cover"
+                                    />
+                                    <div className="p-6">
+                                        <div className="flex items-center mb-3">
+                                            <div className="text-red-500 text-xl mr-3">
+                                                <i className="fas fa-exclamation-triangle"></i>
+                                            </div>
+                                            <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                                {crime.title}
+                                            </h3>
+                                        </div>
+                                        
+                                        <p className={`mb-4 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                            {crime.description}
+                                        </p>
+                                        
+                                        <div className="grid grid-cols-1 gap-3 mb-4">
+                                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-red-50'}`}>
+                                                <h4 className={`font-semibold text-sm mb-1 ${darkMode ? 'text-red-400' : 'text-red-700'}`}>
+                                                    Target: {crime.victim}
+                                                </h4>
+                                                <p className={`text-xs ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                                    {crime.impact}
+                                                </p>
+                                            </div>
+                                            
+                                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-orange-50'}`}>
+                                                <h4 className={`font-semibold text-sm mb-1 ${darkMode ? 'text-orange-400' : 'text-orange-700'}`}>
+                                                    Kerugian: {crime.damage}
+                                                </h4>
+                                                <p className={`text-xs ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                                    {crime.details}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'} border-t ${darkMode ? 'border-gray-600' : 'border-gray-200'} pt-3`}>
+                                            <i className="fas fa-newspaper mr-1"></i>
+                                            <span className="font-semibold">Sumber: </span>
+                                            {crime.source}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </section>
+        );
+    } catch (error) {
+        console.error('CyberSecurity component error:', error);
+        reportError(error);
+    }
+    }</script>
+    <script type="text/babel" src="components/Footer.js">function Footer({ darkMode }) {
+    try {
+        return (
+            <footer data-name="footer" data-file="components/Footer.js" className={`py-12 ${darkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} border-t transition-all duration-300`}>
+                <div className="container mx-auto px-6">
+                    <div className="text-center">
+                        <div className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            AbyyCipherX
+                        </div>
+                        <p className={`mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                            Siswa yang bercita-cita menjadi Web Developer & Cybersecurity Expert
+                        </p>
+                        
+                        <div className="flex justify-center space-x-6 mb-8">
+                            <a href="#" className={`text-2xl hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                <i className="fab fa-github"></i>
+                            </a>
+                            <a href="#" className={`text-2xl hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                <i className="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" className={`text-2xl hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                <i className="fab fa-instagram"></i>
+                            </a>
+                            <a 
+                                href="https://t.me/abylolipop" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className={`text-2xl hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+                            >
+                                <i className="fab fa-telegram"></i>
+                            </a>
+                            <a href="mailto:contact@abyycipherx.com" className={`text-2xl hover:text-blue-500 transition-colors ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                <i className="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                        
+                        <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mb-4`}>
+                            <p className="mb-2">
+                                <i className="fab fa-telegram mr-2"></i>
+                                Telegram: <a href="https://t.me/abylolipop" className="text-blue-500 hover:underline">@abylolipop</a>
+                            </p>
+                        </div>
+                        
+                        <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                            © 2024 AbyyCipherX. Dibuat dengan ❤️ untuk masa depan yang lebih aman.
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        );
+    } catch (error) {
+        console.error('Footer component error:', error);
+        reportError(error);
+    }
+}
+</script>
+    <script src="utils/scrollAnimations.js"></script>
+    <script type="text/babel" src="utils/scrollAnimations.js">// Scroll Animation Controller
+const ScrollAnimations = {
+    init() {
+        this.observeElements();
+        this.addScrollListeners();
+    },
+
+    observeElements() {
+        const options = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    entry.target.classList.remove('animate-out');
+                } else {
+                    entry.target.classList.add('animate-out');
+                    entry.target.classList.remove('animate-in');
+                }
+            });
+        }, options);
+
+        // Observe all sections except hero
+        document.querySelectorAll('section:not([data-name="hero"])').forEach(section => {
+            section.classList.add('scroll-reveal');
+            observer.observe(section);
+        });
+
+        // Observe cards and content within sections
+        document.querySelectorAll('.animate-card, .animate-text, .animate-slide').forEach(element => {
+            observer.observe(element);
+        });
+    },
+
+    addScrollListeners() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    this.handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    },
+
+    handleScroll() {
+        const scrollY = window.scrollY;
+        const sections = document.querySelectorAll('section:not([data-name="hero"])');
+        
+        sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+                section.style.transform = `translateY(${Math.max(0, rect.top * 0.1)}px)`;
+                section.style.opacity = Math.min(1, (window.innerHeight - rect.top) / window.innerHeight);
+            }
+        });
+    }
+};
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    ScrollAnimations.init();
+});</script>
+    <script type="text/babel" src="app.js">function App() {
+    const [darkMode, setDarkMode] = React.useState(true);
+    
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+    
+    React.useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [darkMode]);
+    
+    try {
+        return (
+            <div data-name="app" data-file="app.js" className={`min-h-screen transition-all duration-300 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+                <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                <Hero darkMode={darkMode} />
+                <About darkMode={darkMode} />
+                <Languages darkMode={darkMode} />
+                <CyberSecurity darkMode={darkMode} />
+                <Footer darkMode={darkMode} />
+                
+                <div className="watermark">
+                    AbyyCipherX
+                </div>
+            </div>
+        );
+    } catch (error) {
+        console.error('App component error:', error);
+        reportError(error);
+    }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);</script>
+</body>
+</html>
